@@ -23,7 +23,7 @@
                 }   
               </style>
               <div class="image-container">
-                <img src="img/logo1.jpeg" alt="">
+                <img src="{{url('img/logo1.jpeg')}}" alt="">
               </div>
             <BR></BR>
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">

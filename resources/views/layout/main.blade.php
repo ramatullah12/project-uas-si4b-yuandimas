@@ -84,7 +84,7 @@
                             width: 200px;
                         }   
                       </style>
-                      <div class="image-container">
+                      <div class="{{url('image-container')}}">
                         <img src="{{url('img/logo1.jpeg')}}" alt="">
                       </div>
                 </a>
