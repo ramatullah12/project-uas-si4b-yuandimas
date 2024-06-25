@@ -26,17 +26,18 @@
             "dest": "/public/vendors/"
         },
         {
+            "src": "/lib/(.*)",
+            "dest": "/public/lib/"
+        },
+        {
+            "src": "/img/(.*)",
+            "dest": "/public/img/"
+        },
+        {
             "src": "/(.*)",
             "dest": "/api/index.php"
-        },
-        {
-            "src": "/lib(.*)",
-            "dest": "/api/index.php"
-        },
-        {
-            "src": "/img(.*)",
-            "dest": "/api/index.php"
         }
+        
     ],
     "env": {
         "APP_ENV": "production",
