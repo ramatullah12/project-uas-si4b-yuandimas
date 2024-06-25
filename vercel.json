@@ -28,6 +28,14 @@
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
+        },
+        {
+            "src": "/lib(.*)",
+            "dest": "/api/index.php"
+        },
+        {
+            "src": "/img(.*)",
+            "dest": "/api/index.php"
         }
     ],
     "env": {
