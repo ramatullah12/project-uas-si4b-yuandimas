@@ -21,7 +21,7 @@ class PemesananController extends Controller
         }else{
             $pemesanan = Pemesanan::all();
         }
-        $pemesanan = Pemesanan::with(['rute', 'transportasi', 'category'])->get();
+        //$pemesanan = Pemesanan::with(['rute', 'transportasi', 'category'])->get();
         return view('pemesanan.index', compact('pemesanan'));
     }
 
