@@ -16,7 +16,11 @@ class PemesananController extends Controller
      */
     public function index()
     {
-        
+        if(auth()->user()->role == 'P'){
+            $pemesanan = Pemesanan::where('user_id', auth()->user()->id)->get();
+        }else{
+            $pemesanan = Pemesanan::all();
+        }
         $pemesanan = Pemesanan::with(['rute', 'transportasi', 'category'])->get();
         return view('pemesanan.index', compact('pemesanan'));
     }
