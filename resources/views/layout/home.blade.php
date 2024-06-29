@@ -84,7 +84,7 @@
                             width: 200px;
                         }   
                       </style>
-                      <div class="image-container">
+                      <div class="{{url('image-container')}}">
                         <img src="{{url('img/logo1.jpeg')}}" alt="">
                       </div>
                 </a>
@@ -129,7 +129,7 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img src="{{url('img/carousel-2.jpg')}}" class="{{url('img-fluid')}}" alt="Image">
+                            <img src="{{url('img/carousel-2.jpg')}}" class="{{url('img-fluid')}}" alt="{{url('Image')}}">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
                                     <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
@@ -143,7 +143,7 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{url('img/carousel-1.jpg')}}" class="{{url('img-fluid')}}" alt="Image">
+                            <img src="{{url('img/carousel-1.jpg')}}" class="{{url('img-fluid')}}" alt="{{url('Image')}}">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
                                     <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
@@ -157,7 +157,7 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{url('img/carousel-3.jpg')}}" class="{{url('img-fluid')}}" alt="Image">
+                            <img src="{{url('img/carousel-3.jpg')}}" class="{{url('img-fluid')}}" alt="{{url('Image')}}">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
                                     <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
