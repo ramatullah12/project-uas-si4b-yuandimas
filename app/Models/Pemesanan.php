@@ -9,6 +9,7 @@ class Pemesanan extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'nama',
         'rute_id',
         'transportasi_id',
         'category_id',

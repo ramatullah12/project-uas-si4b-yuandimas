@@ -13,6 +13,13 @@
             <form method="POST" action="{{ route('pemesanan.store') }}" class="forms-sample">
                 @csrf
                 <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}">
+                    @error('nama')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
                     <label for="rute_id">Rute</label>
                     <select name="rute_id" class="form-control" id="rute_id">
                         @foreach ($rute as $r)

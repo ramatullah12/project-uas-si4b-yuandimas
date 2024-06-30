@@ -19,46 +19,44 @@
                     {{ session('error') }}
                 </div>
             @endif
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Rute</th>
-                            <th>Transportasi</th>
-                            <th>Category</th>
-                            <th>Tanggal Pemesanan</th>
-                            <th>Jumlah Tiket</th>
-                            <th>Total Harga</th>
-                            @can('create', App\Pemesanan::class)
-                            <th>Aksi</th>
-                            @endcan
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($pemesanan as $p)
-                            <tr>
-                                <td>{{ $p->rute->start }} - {{ $p->rute->tujuan }}</td>
-                                <td>{{ $p->transportasi->nama }}</td>
-                                <td>{{ $p->category->name }}</td>
-                                <td>{{ $p->tanggal_pemesanan }}</td>
-                                <td>{{ $p->jumlah_tiket }}</td>
-                                <td>{{ $p->total_harga }}</td>
-                          <!-- Menampilkan nama kategori -->
-                                <td>
-                                  @can('create', App\Pemesanan::class)
-                                    <a href="{{ route('pemesanan.edit', $p->id) }}" class="btn btn-warning">Ubah</a>
-                                    <form id="delete-form-{{ $p->id }}" action="{{ route('pemesanan.destroy', $p->id) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="button" class="btn btn-danger" onclick="deletePemesanan({{ $p->id }}, '{{ $p->rute->start }} - {{ $p->rute->tujuan }}')">Hapus</button>
-                                    </form>
-                                  @endcan
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Rute</th>
+                        <th>Transportasi</th>
+                        <th>Category</th>
+                        <th>Tanggal Pemesanan</th>
+                        <th>Jumlah Tiket</th>
+                        <th>Total Harga</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($pemesanan as $item)
+                    <tr>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->rute->start }} - {{ $item->rute->tujuan }}</td>
+                        <td>{{ $item->transportasi->nama }}</td>
+                        <td>{{ $item->category->name }}</td>
+                        <td>{{ $item->tanggal_pemesanan }}</td>
+                        <td>{{ $item->jumlah_tiket }}</td>
+                        <td>{{ number_format($item->total_harga, 2) }}</td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <a href="{{ route('pemesanan.edit', $item->id) }}" class="btn btn-warning btn-sm mr-2">Ubah</a>
+                                <form action="{{ route('pemesanan.destroy', $item->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            
             <a href="{{ route('pemesanan.create') }}" class="btn btn-primary">Tambah Pemesanan</a>
         </div>
     </div>

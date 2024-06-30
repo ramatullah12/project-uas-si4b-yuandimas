@@ -7,6 +7,7 @@ use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\RuteController;
 use App\Http\Controllers\TransportasiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -34,4 +35,5 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::put('/pemesanan/{pemesanan}', [PemesananController::class, 'update'])->name('pemesanan.update');
 

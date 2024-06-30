@@ -43,6 +43,7 @@ class PemesananController extends Controller
     {
         // dd($request);
         $validated = $request->validate([
+            'nama' => 'required',
             'rute_id' => 'required|exists:rutes,id',
             'transportasi_id' => 'required|exists:transportasis,id',
             'category_id' => 'required|exists:categories,id',
@@ -87,24 +88,26 @@ class PemesananController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,$id)
-    {
-        $validated = $request->validate([
-            'rute_id' => 'required|exists:rutes,id',
-            'transportasi_id' => 'required|exists:transportasis,id',
-            'category_id' => 'required|exists:categories,id',
-            'tanggal_pemesanan' => 'required|date',
-            'jumlah_tiket' => 'required|integer|min:1',
-            'total_harga' => 'required|numeric|min:0',
-        ]);
-    
-        $pemesanan = Pemesanan::findOrFail($id);
-        $pemesanan->fill($validated);
-        $pemesanan->save();
-    
-        return redirect()->route('pemesanan.index')
-                         ->with('success', 'Pemesanan berhasil diupdate.');
-    }
+    public function update(Request $request, Pemesanan $pemesanan)
+{
+
+
+    // Validation
+    $validatedData = $request->validate([
+        'nama' => 'required|string|max:255',
+        'rute_id' => 'required|exists:rutes,id',
+        'transportasi_id' => 'required|exists:transportasis,id',
+        'category_id' => 'required|exists:categories,id',
+        'tanggal_pemesanan' => 'required|date',
+        'jumlah_tiket' => 'required|integer|min:1',
+        'total_harga' => 'required|numeric|min:0',
+    ]);
+
+    // Update pemesanan
+    $pemesanan->update($validatedData);
+
+    return redirect()->route('pemesanan.index')->with('success', 'Pemesanan berhasil diperbarui.');
+}
 
     /**
      * Remove the specified resource from storage.

@@ -14,6 +14,13 @@
                 @csrf
                 @method('PUT')
                 <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama', $pemesanan->nama) }}">
+                    @error('nama')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
                     <label for="rute_id">Rute</label>
                     <select name="rute_id" class="form-control" id="rute_id">
                         @foreach ($rute as $r)
@@ -54,7 +61,7 @@
                 </div>
                 <div class="form-group">
                     <label for="tanggal_pemesanan">Tanggal Pemesanan</label>
-                    <input type="datetime-local" class="form-control" name="tanggal_pemesanan" value="{{ old('tanggal_pemesanan') }}">
+                    <input type="datetime-local" class="form-control" name="tanggal_pemesanan" value="{{ old('tanggal_pemesanan', $pemesanan->tanggal_pemesanan) }}">
                     @error('tanggal_pemesanan')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -78,8 +85,8 @@
                     @enderror
                 </div>
                 
-                <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                <a href="{{ route('pemesanan.index') }}" class="btn btn-light">Batal</a>
+                <button type="submit" class="btn btn-primary d-inline-block">Submit</button>
+                <a href="{{ route('pemesanan.index') }}" class="btn btn-light d-inline-block ml-2">Batal</a>
             </form>
         </div>
     </div>
