@@ -88,9 +88,7 @@
                     },
                     xAxis: {
                         categories: [
-                            @foreach ($transportasipemesanan as $item)
-                                ' {{ $item->nama }} ',
-                            @endforeach
+                    
                             
                         ],
                         crosshair: true,
@@ -116,9 +114,7 @@
                     series: [{
                         name: 'Transaportasi',
                         data: [
-                            @foreach ($transportasipemesanan as $item)
-                                {{ $item->jumblah }},
-                            @endforeach
+                            
                         ]
                     }]
                 });
