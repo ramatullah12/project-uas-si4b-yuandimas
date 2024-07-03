@@ -41,6 +41,9 @@ class PemesananController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->user()->cannot('create',Pemesanan::class)){
+            abort(403);
+        }
         // dd($request);
         $validated = $request->validate([
             'nama' => 'required',

@@ -44,14 +44,6 @@
                 </div>
                 <div class="col-lg-4 text-center text-lg-end">
                     <div class="d-inline-flex align-items-center" style="height: 45px;">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="me-3 text-light">
-                                 <i class="fa fa-sign-in-alt me-2"> {{ __('Log Out') }} </i>
-                            </x-dropdown-link>
                         </form>
                         <div class="dropdown">
                             <a href="#" class="dropdown-toggle text-light" data-bs-toggle="dropdown"><small><i class="fa fa-home me-2"></i> My Dashboard</small></a>
@@ -93,6 +85,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
+                        <a class="nav-link" href="{{url('dashboard')}}">
+                            <i class="mdi mdi-bank menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
                         <a class="nav-link" href="{{url('home')}}">
                             <i class="mdi mdi-bank menu-icon"></i>
                             <span class="menu-title">Home</span>
@@ -129,7 +125,7 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img src="{{url('img/carousel-2.jpg')}}" class="{{url('img-fluid')}}" alt="{{url('Image')}}">
+                            <img src="{{url('img/carousel-2.jpg')}}" class="{{url('img-fluid')}}" alt="Image">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
                                     <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
@@ -143,7 +139,7 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{url('img/carousel-1.jpg')}}" class="{{url('img-fluid')}}" alt="{{url('Image')}}">
+                            <img src="{{url('img/carousel-1.jpg')}}" class="{{url('img-fluid')}}" alt="Image">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
                                     <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
@@ -157,7 +153,7 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{url('img/carousel-3.jpg')}}" class="{{url('img-fluid')}}" alt="{{url('Image')}}">
+                            <img src="{{url('img/carousel-3.jpg')}}" class="{{url('img-fluid')}}" alt="Image">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
                                     <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
@@ -192,10 +188,25 @@
             </div>
         </div>
         <!-- Navbar & Hero End -->
-        <div class="main-panel">
-            <div class="content-wrapper">
-              @yield('content')
+        <div class="container-fluid about py-5">
+            <div class="container py-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-5">
+                        <div class="h-100" style="border: 50px solid; border-color: transparent #13357B transparent #13357B;">
+                            <img src="{{url('img/about-img.jpg')}}" class="{{url('img-fluid w-100 h-100')}}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(img/about-img-1.png);">
+                        <h5 class="section-about-title pe-3">Tentang Kami </h5>
+                        <h1 class="mb-4">Selamat datang di <span class="text-primary">Travel odisay</span></h1>
+                        <p class="mb-4">Kami adalah penyedia solusi pemesanan tiket yang inovatif dan handal, menawarkan akses mudah dan cepat ke destinasi di seluruh dunia. Dengan pengalaman yang luas dan komitmen kami untuk memberikan layanan terbaik kepada pelanggan, kami hadir untuk membuat perjalanan Anda menjadi pengalaman yang menyenangkan dan tak terlupakan.</p>
+                        <p class="mb-4">Di Travela, kami memahami betapa pentingnya perjalanan bagi Anda. Itulah sebabnya kami berdedikasi untuk menyediakan platform pemesanan yang mudah digunakan, dengan rangkaian produk dan layanan yang luas, mulai dari tiket pesawat hingga kereta api, acara, dan wisata.</p>
+                        <p class="mb-4">Kami menempatkan kepuasan pelanggan sebagai prioritas utama. Dengan tim yang berpengalaman dan berkomitmen tinggi, kami selalu siap membantu Anda dalam setiap tahap perjalanan Anda. Dari memilih destinasi hingga saat Anda kembali ke rumah, kami akan memberikan dukungan dan bantuan yang Anda butuhkan.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
         <!-- Subscribe Start -->
         <div class="container-fluid subscribe py-5">
             <div class="container text-center py-5">
@@ -215,18 +226,7 @@
         <!-- Copyright Start -->
         <div class="container-fluid copyright text-body py-4">
             <div class="container">
-                <div class="row g-4 align-items-center">
-                    <div class="col-md-6 text-center text-md-end mb-md-0">
-                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">Your Site Name</a>, All right reserved.
-                    </div>
-                    <div class="col-md-6 text-center text-md-start">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By <a class="text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a>
-                    </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
         <!-- Copyright End -->
@@ -236,7 +236,7 @@
 
         
         <!-- JavaScript Libraries -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="{{url('https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{url('lib/easing/easing.min.js')}}"></script>
         <script src="{{url('lib/waypoints/waypoints.min.js')}}"></script>
@@ -245,7 +245,7 @@
         
 
         <!-- Template Javascript -->
-        <script src="{{url('js/main.js"></script>
+        <script src="{{url('js/main.js')}}"></script>
     </body>
 
 </html>

@@ -79,7 +79,7 @@
                         type: 'column'
                     },
                     title: {
-                        text: 'Grafik mahasiswa berdasarkan program studi',
+                        text: 'Grafik Pemesanan berdasarkan Rute',
                         align: 'center'
                     },
                     subtitle: {
@@ -88,6 +88,9 @@
                     },
                     xAxis: {
                         categories: [
+                            @foreach ($transportasipemesanan as $item)
+                                ' {{ $item->nama }} ',
+                            @endforeach
                             
                         ],
                         crosshair: true,
@@ -98,11 +101,11 @@
                     yAxis: {
                         min: 0,
                         title: {
-                            text: 'jumblah (orang)'
+                            text: 'jumblah (Pemesanan)'
                         }
                     },
                     tooltip: {
-                        valueSuffix: ' (orang)'
+                        valueSuffix: ' (Pemesanan)'
                     },
                     plotOptions: {
                         column: {
@@ -111,9 +114,11 @@
                         }
                     },
                     series: [{
-                        name: 'Mahasiswa',
+                        name: 'Transaportasi',
                         data: [
-                            
+                            @foreach ($transportasipemesanan as $item)
+                                {{ $item->jumblah }},
+                            @endforeach
                         ]
                     }]
                 });
