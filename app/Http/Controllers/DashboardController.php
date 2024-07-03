@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     public function index(){
-        // $mahasiswaprodi = DB::select("SELECT rutes.nama, COUNT(*) as jumblah 
-        //     FROM pemesanans
-        //     JOIN prodis on mahasiswas.prodi_id = prodis.id
-        //     GROUP BY prodis.nama ");
+        $transportasipemesanan = DB::select("SELECT transportasis.nama, COUNT(*) as jumblah 
+            FROM pemesanans
+            JOIN pemesanans on transportasis.pemesanan_id = pemesanan_id
+            GROUP BY transportasis.nama ");
         return view('dashboard');
     }
 }
