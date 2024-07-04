@@ -79,7 +79,7 @@
                         type: 'column'
                     },
                     title: {
-                        text: 'Grafik Pemesanan berdasarkan Rute',
+                        text: 'Grafik Pemesanan berdasarkan Transportasi',
                         align: 'center'
                     },
                     subtitle: {
@@ -88,10 +88,9 @@
                     },
                     xAxis: {
                         categories: [
-                            @foreach ($transportasipemesanan as $item)
-                                {{ $item->jumblah }},
+                            @foreach ($transportasipemesenan as $item)
+                                '{{ $item->jumlah_tiket }}',
                             @endforeach
-                            
                         ],
                         crosshair: true,
                         accessibility: {
@@ -101,11 +100,11 @@
                     yAxis: {
                         min: 0,
                         title: {
-                            text: 'jumblah (Pemesanan)'
+                            text: 'jumblah (orang)'
                         }
                     },
                     tooltip: {
-                        valueSuffix: ' (Pemesanan)'
+                        valueSuffix: ' (orang)'
                     },
                     plotOptions: {
                         column: {
@@ -114,11 +113,12 @@
                         }
                     },
                     series: [{
-                        name: 'Transaportasi',
+                        name: 'Transportasi',
                         data: [
-                            @foreach ($transportasipemesanan as $item)
-                                ' {{ $item->nama }} ',
+                            @foreach ($transportasipemesenan as $item)
+                                ' {{ $item->jenis }} ',
                             @endforeach
+
                         ]
                     }]
                 });

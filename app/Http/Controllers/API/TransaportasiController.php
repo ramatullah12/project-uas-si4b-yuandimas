@@ -4,7 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Transportasi;
+use App\Models\User;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransaportasiController extends Controller
 {
@@ -59,11 +62,11 @@ public function destroy($id)
     if(count($transportasi->get())){
         $transportasi->delete();
         $response['success'] = true;
-        $response['message'] = 'Rute berhasil dihapus.';
+        $response['message'] = 'transportasi berhasil dihapus.';
         return response()->json($response, Response::HTTP_OK);
     } else {
         $response['success'] = false;
-        $response['message'] = 'Rute tidak ditemukan.';
+        $response['message'] = 'transportasi tidak ditemukan.';
         return response()->json($response, Response::HTTP_NOT_FOUND);
     } 
 }
