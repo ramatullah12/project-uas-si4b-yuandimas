@@ -89,7 +89,7 @@
                     xAxis: {
                         categories: [
                             @foreach ($transportasipemesenan as $item)
-                                '{{ $item->jumlah_tiket }}',
+                                ' {{ $item->jenis }} ',
                             @endforeach
                         ],
                         crosshair: true,
@@ -115,8 +115,9 @@
                     series: [{
                         name: 'Transportasi',
                         data: [
+                            
                             @foreach ($transportasipemesenan as $item)
-                                ' {{ $item->jenis }} ',
+                                {{ $item->jumlah_tiket }},
                             @endforeach
                             
                         ]
