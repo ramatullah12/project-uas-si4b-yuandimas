@@ -118,7 +118,7 @@
                             @foreach ($transportasipemesenan as $item)
                                 ' {{ $item->jenis }} ',
                             @endforeach
-
+                            
                         ]
                     }]
                 });

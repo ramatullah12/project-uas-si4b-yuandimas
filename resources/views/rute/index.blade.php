@@ -25,21 +25,20 @@
                     <tbody>
                         @foreach ($rute as $r)
                             <tr>
-                              
                                 <td>{{ $r->start }}</td>
                                 <td>{{ $r->tujuan }}</td>
                                 <td>{{ $r->harga }}</td>
                                 <td>{{ $r->transportasi->nama }}</td>
+                                @can('create', App\Pemesanan::class)
                                 <td>
-                                  @can('create', App\Pemesanan::class)
                                     <a href="{{ route('rute.edit', $r->id) }}" class="btn btn-warning">Ubah</a>
                                     <button class="btn btn-danger delete-btn" data-id="{{ $r->id }}" data-name="{{ $r->start }} - {{ $r->tujuan }}">Hapus</button>
                                     <form id="delete-form-{{ $r->id }}" action="{{ route('rute.destroy', $r->id) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
-                                  @endcan
                                 </td>
+                                @endcan
                             </tr>
                         @endforeach
                     </tbody>
@@ -48,33 +47,23 @@
             @can('create', App\Pemesanan::class)
             <a href="{{ route('rute.create') }}" class="btn btn-primary">Tambah Rute</a>
             @endcan
-          </div>
+        </div>
     </div>
 </div>
 
-@if (session('success'))     
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    Swal.fire({
-        title: "Good job!",
-        text: "{{ session('success') }}",
-        icon: "success"
-    });
-</script>
-@endif
-
-<script>
     document.addEventListener('DOMContentLoaded', function() {
-        let deleteButtons = document.querySelectorAll('.delete-btn');
-        
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+
         deleteButtons.forEach(button => {
             button.addEventListener('click', function() {
-                let id = this.getAttribute('data-id');
-                let name = this.getAttribute('data-name');
+                const routeId = this.getAttribute('data-id');
+                const routeName = this.getAttribute('data-name');
 
                 Swal.fire({
-                    title: "Apakah yakin mau menghapus data " + name + "?",
-                    text: "Setelah dihapus, data tidak bisa dikembalikan!",
+                    title: `Apakah yakin ingin menghapus rute ${routeName}?`,
+                    text: "Setelah dihapus, data tidak dapat dikembalikan!",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#d33",
@@ -82,12 +71,19 @@
                     confirmButtonText: "Ya, Hapus!"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        let form = document.getElementById('delete-form-' + id);
-                        form.submit();
+                        document.getElementById(`delete-form-${routeId}`).submit();
                     }
                 });
             });
         });
     });
+
+    @if (session('success'))
+    Swal.fire({
+        title: "Good job!",
+        text: "{{ session('success') }}",
+        icon: "success"
+    });
+    @endif
 </script>
 @endsection

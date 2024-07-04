@@ -45,10 +45,10 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <a href="{{ route('pemesanan.edit', $item->id) }}" class="btn btn-warning btn-sm mr-2">Ubah</a>
-                                <form action="{{ route('pemesanan.destroy', $item->id) }}" method="POST">
+                                <button class="btn btn-danger btn-sm" onclick="deletePemesanan({{ $item->id }}, '{{ $item->nama }}')">Hapus</button>
+                                <form id="delete-form-{{ $item->id }}" action="{{ route('pemesanan.destroy', $item->id) }}" method="POST" style="display: none;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                 </form>
                             </div>
                         </td>
@@ -74,9 +74,9 @@
     @endif
 
     // Fungsi untuk menampilkan konfirmasi SweetAlert2 saat menghapus pemesanan
-    function deletePemesanan(id, route) {
+    function deletePemesanan(id, name) {
         Swal.fire({
-            title: "Apakah yakin ingin menghapus pemesanan dengan rute " + route + "?",
+            title: "Apakah yakin ingin menghapus pemesanan atas nama " + name + "?",
             text: "Setelah dihapus, data tidak dapat dikembalikan!",
             icon: "warning",
             showCancelButton: true,
