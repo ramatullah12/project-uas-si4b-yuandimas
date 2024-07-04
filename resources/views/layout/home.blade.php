@@ -85,6 +85,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
+                        <a class="nav-link" href="{{url('dashboard')}}">
+                            <i class="mdi mdi-bank menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
                         <a class="nav-link" href="{{url('home')}}">
                             <i class="mdi mdi-bank menu-icon"></i>
                             <span class="menu-title">Home</span>
