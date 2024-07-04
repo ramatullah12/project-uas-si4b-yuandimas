@@ -21,7 +21,7 @@ class TransaportasiController extends Controller
         }
 
         $response['success'] = true;
-        $response['message'] = 'Rute ditemukan.';
+        $response['message'] = 'Transportasi ditemukan.';
         $response['data'] = $transportasi;
         return response()->json($response, Response::HTTP_OK);
         // atau
