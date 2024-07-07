@@ -30,25 +30,22 @@ class TransaportasiController extends Controller
     public function store(Request $request)
 {
     $validate = $request->validate([
-        'name' => 'required',
-            'singkatan' => 'required',
-            'harga' => 'required'
+        'nama' => 'required|string|max:255',
+        'jenis' => 'required|string|max:255',
     ]);
 
     $transportasi = Transportasi::create($validate);
     if($transportasi){
         $response['success'] = true;
-        $response['message'] = 'transportasi berhasil ditambahkan.';
+        $response['message'] = 'Fakultas berhasil ditambahkan.';
         return response()->json($response, Response::HTTP_CREATED);
     }
 }
 public function update(Request $request, $id)
 {
     $validate = $request->validate([
-        'start' => 'required|string|max:255',
-            'tujuan' => 'required|string|max:255',
-            'harga' => 'required|numeric',
-            'transportasi_id' => 'required|exists:transportasis,id',
+        'nama' => 'required|string|max:255',
+        'jenis' => 'required|string|max:255',
     ]);
 
     Transportasi::where('id', $id)->update($validate);
@@ -70,35 +67,5 @@ public function destroy($id)
         return response()->json($response, Response::HTTP_NOT_FOUND);
     } 
 }
-public function register(Request $request)
-{
-    $validate = $request->validate([
-        'start' => 'required|string|max:255',
-            'tujuan' => 'required|string|max:255',
-            'harga' => 'required|numeric',
-            'transportasi_id' => 'required|exists:transportasis,id',
-    ]);
 
-    $validate['password'] = bcrypt($request->password);
-
-    $user = User::create($validate);
-    $success['token'] = $user->createToken('MDPApp')->plainTextToken;
-    $success['name'] = $user->name;
-
-    return response()->json($success, Response::HTTP_CREATED);
-}
-public function login(Request $request)
-{
-    if(Auth::attempt([
-        'email' => $request->email,
-        'password' => $request->password
-    ])) {
-        $user = Auth::user();
-        $success['token'] = $user->createToken('MDPApp')->plainTextToken;
-        $success['name'] = $user->name;
-        return response()->json($success, 201);
-    } else {
-        return response()->json(['error' => 'Unauthorized'], 401);
-    }
-}
 }

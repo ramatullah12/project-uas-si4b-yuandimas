@@ -32,7 +32,7 @@ Route::delete('rute/{id}', [RuteController::class, 'destroy']);
 Route::post('register', [AuthenticatedSessionController::class, 'register']);
 Route::post('login', [AuthenticatedSessionController::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('transportasi', [TransaportasiController::class, 'index']);Route::post('transportasi', [TransportasiController::class, 'store']);
+Route::middleware('auth:sanctum')->get('transportasi', [TransaportasiController::class, 'index']);Route::post('transportasi', [TransaportasiController::class, 'store']);
 Route::patch('transportasi/{id}', [TransaportasiController::class, 'update']);
 Route::delete('transportasi/{id}', [TransaportasiController::class, 'destroy']);
 Route::post('register', [AuthenticatedSessionController::class, 'register']);
